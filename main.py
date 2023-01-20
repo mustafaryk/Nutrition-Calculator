@@ -1,12 +1,12 @@
-# tuple of all the foods and their nutrition
+# database tuple of all the foods and their nutrition
 
 list_foods = (
         ({  # nutrition of the food
              'Protein': 11,
              'Calories': 52},
-         'egg_white'),  # chicken, name of the food
+         'egg_white'),  # egg_white , name of the food
 
-        ({  # nutrition of the food
+        ({ 
              'Protein': 31,
              'Calories': 165},
          'chicken'),  # chicken, name of the food
@@ -90,7 +90,7 @@ list_foods = (
 
 
 def main():
-    # we need to get bodyweight for required protein calculation also we failsafe it
+    # we need to get bodyweight for required protein calculation also we need to check to make sure a number is entered
     while True:
         try:
             bodyweight = round(float(input('What is your weight?').strip()))
@@ -123,8 +123,8 @@ def main():
             nutrition_today[nutrient] += round(food_nutrition[nutrient] * grams)  # add the nutrition of the food to
             # total
 
-    consumed_foods = input('What did you eat today? ').strip().lower().split()  # foods we ate today
-    for food in consumed_foods:
+    consumed_foods = input('What did you eat today? ').strip().lower().split()  # enter foods eaten seperated by spaces
+    for food in consumed_foods:  # checking if the food is present in our database, if not it is ignored
         for food_ in list_foods:
             if food == food_[1]:
                 consume(food_[0], food_[1])
